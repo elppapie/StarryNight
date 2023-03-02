@@ -31,7 +31,15 @@
 .fc-daygrid-day-number{
     color: white;
 	float:left;
+	align-items:left !important;
+	font-weight: bold;
 }
+.fc-daygrid-day-top{
+	overflow:auto;
+	text-align:left !important;
+	
+}
+
 </style>
 <script>
 	$(function(){
@@ -63,6 +71,19 @@
 		fullCalendarAPI();
 	});
 
+	$(function(){
+		//console.log($('.fc-daygrid-day-number').text());
+		
+		// 00일 --> 00 으로 변경
+		$('.fc-daygrid-day-number').each(function(){
+			$(this).text($(this).text().split('일')[0]);
+		});
+		var oneDayEvent = '<div style="display:flex;"></div>'
+		var square = '<div style="background-color:pink; border-radius:20px; height:20px; width:auto; margin:0 5px 0 5px; font-size:0.7rem; text-align:center; line-height:20px;">일일 이벤트</div>'
+		var dateFormed = "2023-03-15";
+		//.insertAfter($('td[data-date='+dateFormed+']'))
+		$('td[data-date='+dateFormed+'] > div > div:nth-child(2)').prepend(oneDayEvent).append(square);
+	});
 </script>
 
 
